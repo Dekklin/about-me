@@ -1,12 +1,13 @@
 body {
-    background-color: blue;
+    background-color: grey;
 }
-h3 {
-    color: yellow
+h1 {
+    color:black;
+    padding: 25px 100px;
 }
-p {
-    color: darkorange
+ul {
+    background-color: darkorange;
 }
-h3 {
-    color: yellow
+h1 {
+    color: yellow;
 }
