@@ -13,60 +13,80 @@ if (!userName) { //User's Name
 //arrays of Questions and Answers
 var questionArray = ['What is my favorite color?', 'What is my favorite winter hobby?', 'What is my age?', 'Who is my favorite actor?', 'What is my favorite beatle\'s song?'];
 var answerArray = ['purple', 'snowboarding', '23', 'johnny depp', 'hey jude'];
-for(var i = 0; i < questionArray.length; i++) {
-  var answer = prompt(questionArray[i]).toLowerCase();
-  // while answer < 1 {
-  if (answer === answerArray[i]){
-    alert('Congrats ' + userName + '! +1 point for you!');
-    score ++;
-    console.log(userName + ' got question #' + i + ' correct');
-  } else {
-    alert('Better luck next time ):');
-    console.log(userName + ' got Question #' + i + ' incorrect');
+
+// start first function here
+function compareArrays () {
+  for(var i = 0; i < questionArray.length; i++) {
+    var answer = prompt(questionArray[i]).toLowerCase();
+    // while answer < 1 {
+    if (answer === answerArray[i]){
+      alert('Congrats ' + userName + '! +1 point for you!');
+      score ++;
+      console.log(userName + ' got question #' + i + ' correct');
+    } else {
+      alert('Better luck next time ):');
+      console.log(userName + ' got Question #' + i + ' incorrect');
+    }
   }
+//end first function here
 }
+compareArrays();
+
 // Q6 - Guessing game multiple correct answers, multiple chances
 var stateLiving = ['connecticut', 'california', 'florida'];
 var chances = 5;
-while(chances > 0){
-  if(chances > 1) {
-    var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
-  } else {
-    stateGuess = prompt( 'In ' + chances + ' guess, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
-  }
-  var isCorrect = false;
-  for (var x = 0; x < stateLiving.length; x++){
-    if(stateGuess === stateLiving[x]) {
-      isCorrect = true;
+
+//start 2nd funciton here
+function livingFunction () {
+  while(chances > 0){
+    if(chances > 1) {
+      var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+    } else {
+      stateGuess = prompt( 'In ' + chances + ' guess, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+    }
+    var isCorrect = false;
+    for (var x = 0; x < stateLiving.length; x++){
+      if(stateGuess === stateLiving[x]) {
+        isCorrect = true;
+        break;
+      }
+    }
+    if(isCorrect){
+      alert('Yay! +1 point for ' + userName);
+      score++;
       break;
+    }else{
+      alert('Oops. Try again.');
+      chances--;
     }
   }
-  if(isCorrect){
-    alert('Yay! +1 point for' + userName);
-    score++;
-    break;
-  }else{
-    alert('Oops. Try again.');
-    chances--;
+  if (isCorrect === true) {
+    console.log(userName + 'got question #6 correct');
+  } else {
+    console.log(userName + 'got question #6 incorrect');
   }
+//ends 2nd function
 }
-if (isCorrect === true) {
-  console.log(userName + 'got question #6 correct');
-} else {
-  console.log(userName + 'got question #6 incorrect');
-}
+livingFunction();
+
 // Q7 - random number guess
-var randomNumberGuess = prompt('What number between 1-10 am I thinking of?');
-if(randomNumberGuess === randomNumber) {
-  alert('Wow, how\'d you know that!!!');
-  score++;
-} else {
-  alert('Ha, nice try guy! The number I was thinking of was ' + randomNumber);
+
+//starting 3rd function
+function numberGuess() {
+  var randomNumberGuess = parseInt(prompt('What number between 1-10 am I thinking of?'));
+  if(randomNumberGuess === randomNumber) {
+    alert('Wow, how\'d you know that!!!');
+    score++;
+  } else {
+    alert('Ha, nice try guy! The number I was thinking of was ' + randomNumber);
+  }
+  var totalPossibleScore = questionArray.length + 2;
+  if(score >=4) {
+    alert('You passed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+  } else {
+    alert('You failed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+  }
+  console.log(userName + '\'s score is ' + score);
+//end third function
 }
-var totalPossibleScore = questionArray.length + 2;
-if(score >=4) {
-  alert('You passed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
-} else {
-  alert('You failed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
-}
-console.log(userName + '\'s score is ' + score);
+numberGuess();
