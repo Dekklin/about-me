@@ -1,86 +1,62 @@
 'use strict';
-// var score = 0;
-var userName = prompt('What is your name?');
-if (!userName) {
+var userName = prompt('What is your name?'); //player's Name
+var randomNumber = Math.round(Math.random()*10); //Random number user Guesses
+console.log(randomNumber);
+var score = 0; //User's score
+if (!userName) { //User's Name
   alert('No it\'s not!');
   userName = prompt('I said, What. Is. Your. Name?');
 } else {
-  alert('Hello ' + userName + ', welcome to my About Me! My name is Collin Hintzke');
+  alert('Hello ' + userName + ', welcome to my About Me! My name is Collin Hintzke! And I would love to give you a Quiz, Lets get started!');
   console.log('Their name is ' + userName);
 }
-var answerArray = ['purple', 'snowboarding', 23, 'johnny depp', 'hey jude'];
-
+//arrays of Questions and Answers
 var questionArray = ['What is my favorite color?', 'What is my favorite winter sport?', 'What is my age?', 'Who is my favorite actor?', 'What is my favorite beatle\'s song?'];
-
+var answerArray = ['purple', 'snowboarding', '23', 'johnny depp', 'hey jude'];
 for(var i = 0; i < questionArray.length; i++) {
   var answer = prompt(questionArray[i]).toLowerCase();
   if (answer === answerArray[i]){
-    alert('congrats!');
+    alert('Congrats ' + userName + '! +1 point for you!');
+    score ++;
+    console.log('They got question #' + i + ' correct');
   } else {
-    alert('sorry you are wrong!');
+    alert('Better luck next time ):');
+    console.log('They got Question #' + i + ' incorrect');
   }
-
-
-
-
-
 }
-// var playerGuess = prompt('How old am I?');
-// var playerGuess = prompt('Who is my favorite actor?');
-// var playerGuess = prompt('What is my favorite beatles song?');
-// var randomNumber = Math.random() * 10 + 1;
-// prompt('What number between 1-10 am I thinking of?');
-// for(var i = 0; i < correctAnswers.length; i++) {
-//   var playerGuess = prompt('What do you think my favourite color is?');
-//   if(playerGuess === correctAnswers[i]){
-//     alert('correct');
-//   } else {
-//     alert('Sorry, better luck next time!');
-//     // playerGuess = prompt('What is my favorite sport?');
-//   }
-// }
-
-//   alert('Good Job, +1 point for you!');
-//   console.log (userName + ' guessed my favorite color correctly! I like both grey and purple!');
-//   score = score + 1;
-// } else {
-//   alert('Sorry ' + userName + '. You were incorrect, my favorite color is grey and purple!');
-
-
-//   console.log (userName + ' was wrong about my favorite color');
-// }
-
-// var favHobby = prompt('What is my favorite outdoor hobby?');
-// if (favHobby.toLowerCase() === 'snowboard' || favHobby.toLowerCase() === 'snowboarding') {
-//   alert('Correct. I absolutely love the snow and snowboarding has always been a passion of mine!');
-//   console.log(userName + ' guessed my favorite hobby correctly');
-//   score = score + 1;
-// } else {
-//   alert('Sorry, but you were incorrect.');
-//   console.log (userName + 'was incorrect about my favorite hobby.');
-// }
-// var age = prompt('How old do you think I am?');
-// if (parseInt(age) === 23) {
-//   alert('Congrats ' + userName + ' You are spot on!');
-//   score = score + 1;
-// } else {
-//   alert('Sorry but you are incorrect, I am 23 years old');
-// }
-// var favActor = prompt('Who is my favorite actor?');
-// if (favActor.toLowerCase() === 'johnny depp'){
-//   alert('Holy cow ' + userName + ' You are correct, I love all the weird oddball characters John can play!');
-//   score = score + 1;
-//   // score++;
-//   // score += 1;
-// } else {
-//   alert('Sorry but you were incorrect again ):');
-// }
-// var favSong = prompt('One last question ' + userName + ', what is my favorite Beatles song?');
-// if (favSong.toLowerCase() === 'hey jude') {
-//   alert('Wow you got it correct ' + userName + '! Someone give this person a cookie!');
-//   score = score + 1;
-// } else {
-//   alert('Sorry ' + userName + ', but my favorite song is Hey Jude, not ' + favSong);
-//   console.log(userName + ' Did not get my favorite Beatles song correctly, but he does like ' + favSong);
-// }
-// console.log(userName + '\'s score is ' + score);
+//Guessing game multiple correct answers, multiple chances
+var stateLiving = ['connecticut', 'california', 'florida'];
+var chances = 5;
+while(chances > 0){
+  var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+  var isCorrect = false;
+  for (var x = 0; x < stateLiving.length; x++){
+    if(stateGuess === stateLiving[x]) {
+      isCorrect = true;
+      break;
+    }
+  }
+  if(isCorrect){
+    alert('Yay!');
+    score++;
+    break;
+  }else{
+    alert('Oops. Try again.');
+    chances--;
+  }
+}
+//random number guess
+var randomNumberGuess = prompt('What number between 1-10 am I thinking of?');
+if(randomNumberGuess === randomNumber) {
+  alert('Wow, how\'d you know that!!!');
+  score++;
+} else {
+  alert('Ha, nice try guy! The number I was thinking of was ' + randomNumber);
+}
+var totalPossibleScore = questionArray.length + 2;
+if(score >=4) {
+  alert('You passed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+} else {
+  alert('You failed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+}
+console.log(userName + '\'s score is ' + score);

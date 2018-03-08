@@ -1,13 +1,29 @@
 body {
-    background-color: grey;
+    background-color: black;
+    color:rgb(30, 168, 30);
+    font: courier;
 }
 h1 {
-    color:black;
-    padding: 25px 100px;
+    color: rgb(30, 168, 30);
+    text-align: center;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: grey;
+    border-width: 9px;
+    border-spacing: 25px;
+    padding: 10px;
+    font-size: 80px;
 }
 ul {
-    background-color: darkorange;
+    padding-top: 40px;
+    font-weight: bold;
 }
-h1 {
-    color: yellow;
+h2 {
+    font-weight: bold;
+    padding-bottom: 20px;
+    font-size: 25px;
+}
+ol {
+    padding: 50px;
+    list-style-type: disc;
 }
