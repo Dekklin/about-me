@@ -11,7 +11,7 @@ if (!userName) { //User's Name
   console.log('Their name is ' + userName);
 }
 //arrays of Questions and Answers
-var questionArray = ['What is my favorite color?', 'What is my favorite winter sport?', 'What is my age?', 'Who is my favorite actor?', 'What is my favorite beatle\'s song?'];
+var questionArray = ['What is my favorite color?', 'What is my favorite winter hobby?', 'What is my age?', 'Who is my favorite actor?', 'What is my favorite beatle\'s song?'];
 var answerArray = ['purple', 'snowboarding', '23', 'johnny depp', 'hey jude'];
 for(var i = 0; i < questionArray.length; i++) {
   var answer = prompt(questionArray[i]).toLowerCase();
