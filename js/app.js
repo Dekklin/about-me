@@ -1,6 +1,6 @@
 'use strict';
 var userName = prompt('What is your name?'); //player's Name
-var randomNumber = Math.round(Math.random()*10); //Random number user Guesses
+var randomNumber = Math.ceil(Math.random()*10); //Random number user Guesses
 console.log(randomNumber);
 var score = 0; //User's score
 if (!userName) { //User's Name
@@ -15,20 +15,25 @@ var questionArray = ['What is my favorite color?', 'What is my favorite winter h
 var answerArray = ['purple', 'snowboarding', '23', 'johnny depp', 'hey jude'];
 for(var i = 0; i < questionArray.length; i++) {
   var answer = prompt(questionArray[i]).toLowerCase();
+  // while answer < 1 {
   if (answer === answerArray[i]){
     alert('Congrats ' + userName + '! +1 point for you!');
     score ++;
-    console.log('They got question #' + i + ' correct');
+    console.log(userName + ' got question #' + i + ' correct');
   } else {
     alert('Better luck next time ):');
-    console.log('They got Question #' + i + ' incorrect');
+    console.log(userName + ' got Question #' + i + ' incorrect');
   }
 }
-//Guessing game multiple correct answers, multiple chances
+// Q6 - Guessing game multiple correct answers, multiple chances
 var stateLiving = ['connecticut', 'california', 'florida'];
 var chances = 5;
 while(chances > 0){
-  var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+  if(chances > 1) {
+    var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+  } else {
+    stateGuess = prompt( 'In ' + chances + ' guess, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+  }
   var isCorrect = false;
   for (var x = 0; x < stateLiving.length; x++){
     if(stateGuess === stateLiving[x]) {
@@ -37,7 +42,7 @@ while(chances > 0){
     }
   }
   if(isCorrect){
-    alert('Yay!');
+    alert('Yay! +1 point for' + userName);
     score++;
     break;
   }else{
@@ -45,7 +50,12 @@ while(chances > 0){
     chances--;
   }
 }
-//random number guess
+if (isCorrect === true) {
+  console.log(userName + 'got question #6 correct');
+} else {
+  console.log(userName + 'got question #6 incorrect');
+}
+// Q7 - random number guess
 var randomNumberGuess = prompt('What number between 1-10 am I thinking of?');
 if(randomNumberGuess === randomNumber) {
   alert('Wow, how\'d you know that!!!');
