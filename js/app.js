@@ -34,10 +34,10 @@ compareArrays();
 
 // Q6 - Guessing game multiple correct answers, multiple chances
 var stateLiving = ['connecticut', 'california', 'florida'];
-var chances = 5;
 
 //start 2nd funciton here
 function livingFunction () {
+  var chances = 4;
   while(chances > 0){
     if(chances > 1) {
       var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
@@ -73,20 +73,34 @@ livingFunction();
 
 //starting 3rd function
 function numberGuess() {
-  var randomNumberGuess = parseInt(prompt('What number between 1-10 am I thinking of?'));
-  if(randomNumberGuess === randomNumber) {
-    alert('Wow, how\'d you know that!!!');
-    score++;
-  } else {
-    alert('Ha, nice try guy! The number I was thinking of was ' + randomNumber);
+  var chances = 4;
+  var randomNumberGuess;
+  while(chances > 0) {
+    if(chances === 1) {
+      randomNumberGuess = parseInt(prompt('You have ' + chances + ' guess left to guess the random number between 1-10 that I am thinking of?'));
+    } else {
+      randomNumberGuess = parseInt(prompt('You have ' + chances + ' guesses left to guess the random number between 1-10 that I am thinking of?'));
+    }
+    var isCorrect = false;
+    if(randomNumberGuess === randomNumber) {
+      isCorrect = true;
+      break;
+    }
+    if (isCorrect) {
+      score++;
+      alert('Congrats +1 point for you!');
+      console.log(userName + 'got question #7 correct');
+    } else {
+      alert('Better luck next time!');
+    }
   }
-  var totalPossibleScore = questionArray.length + 2;
-  if(score >=4) {
-    alert('You passed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
-  } else {
-    alert('You failed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
-  }
-  console.log(userName + '\'s score is ' + score);
-//end third function
 }
 numberGuess();
+var totalPossibleScore = questionArray.length + 2;
+if(score >=4) {
+  alert('You passed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+} else {
+  alert('You failed with a score of ' + score + ' out of ' + totalPossibleScore + '!');
+}
+console.log(userName + '\'s score is ' + score);
+//end third function
