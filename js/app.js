@@ -38,11 +38,12 @@ var stateLiving = ['connecticut', 'california', 'florida'];
 //start 2nd funciton here
 function livingFunction () {
   var chances = 4;
+  var stateGuess;
   while(chances > 0){
     if(chances > 1) {
-      var stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+      stateGuess = prompt('In ' + chances + ' guesses, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
     } else {
-      stateGuess = prompt( 'In ' + chances + ' guess, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
+      stateGuess = prompt('In ' + chances + ' guess, Can you guess one of the 3 other states besides Washington that I have lived in?').toLowerCase();
     }
     var isCorrect = false;
     for (var x = 0; x < stateLiving.length; x++){
@@ -60,7 +61,7 @@ function livingFunction () {
       chances--;
     }
   }
-  if (isCorrect === true) {
+  if (isCorrect) {
     console.log(userName + 'got question #6 correct');
   } else {
     console.log(userName + 'got question #6 incorrect');
@@ -92,6 +93,7 @@ function numberGuess() {
       console.log(userName + 'got question #7 correct');
     } else {
       alert('Better luck next time!');
+      chances --;
     }
   }
 }
